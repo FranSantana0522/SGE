@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <title>Title</title>
+        <title>Formulario ventas</title>
         <!-- Required meta tags -->
         <meta charset="utf-8" />
         <meta
@@ -23,7 +23,7 @@
         <header>
             <!-- place navbar here -->
             <div class="container-fluid bg-dark text-light d-flex align-items-center justify-content-center" style="height:10vh">
-                Formulario de ventas
+                <h1>Formulario de ventas</h1>
             </div>
         </header>
         <main>
@@ -64,7 +64,7 @@
         <footer>
             <!-- place footer here -->
             <div class="container-fluid bg-dark text-light d-flex align-items-center justify-content-center fixed-bottom" style="height:10vh">
-                footer
+                
             </div>
         </footer>
         </div>

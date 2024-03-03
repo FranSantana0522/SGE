@@ -1,11 +1,5 @@
 <?php      
 
-$bdName = "2324_SGE_VCF";
-$bdUser = "odoo";
-$bdPass = "odoo";
-$host = "localhost";
-
-
 function conectarBD($bdName, $bdUser, $bdPass, $host) {
     try {
         // Establecer la conexión utilizando PDO
@@ -47,8 +41,36 @@ function consultaListadoVentas($conexion, $fechaInicio, $fechaFin) {
 
         return $resultados;
     } catch (PDOException $e) {
-        // En caso de error, mostrar el mensaje de error
-        echo "Error al ejecutar la consulta: " . $e->getMessage();
+        $e->getMessage();
         return null;
     }
 }
+
+function obtenerLogoCompania($conexion, $companyId) {
+    try {
+        // Consulta para obtener el logo de la compañía
+        $sql = "SELECT logo_web FROM res_company WHERE id = :companyId";
+
+        // Preparar la sentencia PDO
+        $stmt = $conexion->prepare($sql);
+
+        // Enlazar el valor del ID de la compañía como parámetro
+        $stmt->bindParam(':companyId', $companyId);
+
+        // Ejecutar la consulta
+        $stmt->execute();
+
+        // Obtener los datos binarios de la imagen como un string
+        $imagenBinaria = $stmt->fetchColumn();
+
+        return $imagenBinaria;
+
+    } catch (PDOException $e) {
+        // Manejar errores
+        echo "Error al obtener el logo de la compañía: " . $e->getMessage();
+        return null;
+    }
+}
+
+
+
