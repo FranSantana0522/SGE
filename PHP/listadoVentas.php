@@ -19,8 +19,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($conexion) {
             // Ejecutar la consulta
             $resultados = consultaListadoVentas($conexion, $fechaInicio, $fechaFin);
-            // Ejecutar la consulta
-            $logoCompania = obtenerLogoCompania($conexion, 1);
 
             // Cerrar la conexión
             $conexion = null;
@@ -39,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="wrapper">
                     <header class="bg-dark text-light d-flex align-items-center" style="height:10vh">
                         <div class="container-auto">
-                            <img src='data:image/jpeg;base64,<?= base64_encode($imagenBinaria) ?>' alt='Logo de la compañía' class="fixed-left">
+                            <img src='./san-francisco-california-skyline-6.jpg' alt='Logo de la compañía' class="fixed-left img-fluid" style="width: 200px; height: 10vh;">
                         </div>
                         <div class="container-fluid text-center d-flex align-items-center justify-content-center me-5" style="height:10vh">
                             <h1 class="me-5">Listado de ventas</h1>

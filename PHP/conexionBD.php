@@ -46,31 +46,5 @@ function consultaListadoVentas($conexion, $fechaInicio, $fechaFin) {
     }
 }
 
-function obtenerLogoCompania($conexion, $companyId) {
-    try {
-        // Consulta para obtener el logo de la compañía
-        $sql = "SELECT logo_web FROM res_company WHERE id = :companyId";
-
-        // Preparar la sentencia PDO
-        $stmt = $conexion->prepare($sql);
-
-        // Enlazar el valor del ID de la compañía como parámetro
-        $stmt->bindParam(':companyId', $companyId);
-
-        // Ejecutar la consulta
-        $stmt->execute();
-
-        // Obtener los datos binarios de la imagen como un string
-        $imagenBinaria = $stmt->fetchColumn();
-
-        return $imagenBinaria;
-
-    } catch (PDOException $e) {
-        // Manejar errores
-        echo "Error al obtener el logo de la compañía: " . $e->getMessage();
-        return null;
-    }
-}
-
 
 
