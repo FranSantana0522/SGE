@@ -21,15 +21,18 @@
     <body>
         <div class="container-{content}">
         <header>
-            <!-- place navbar here -->
+            <!-- Header  -->
             <div class="container-fluid bg-dark text-light d-flex align-items-center justify-content-center" style="height:10vh">
                 <h1>Formulario de ventas</h1>
             </div>
         </header>
         <main>
+            <!-- Main div donde esta el formulario -->
             <div class="bg-warning d-flex align-items-center justify-content-center shadow-lg" style="height:80vh">
 
+            <!-- El formulario con el action hacia donde se envian los datos con el metodo post -->
             <form action="listadoVentas.php" method="post" class="mt-3">
+                <!-- Input para la fecha de inicio -->
             <div class="form-floating mb-3" style="width: 20vw;">
                 <input
                     type="date"
@@ -40,6 +43,7 @@
                 />
                 <label for="formId1">Fecha de inicio</label>
             </div>
+            <!-- Input para la fecha de fin -->
             <div class="form-floating mb-3" style="width: 20vw;">
                 <input
                     type="date"
@@ -50,11 +54,12 @@
                 />
                 <label for="formId2">Fecha de fin</label>
             </div>
+            <!-- Boton para enviar -->
             <button
                 type="submit"
                 class="btn btn-primary"
             >
-                Submit
+                Enviar
             </button>
             
             </form>
@@ -62,7 +67,7 @@
             </div>
         </main>
         <footer>
-            <!-- place footer here -->
+            <!--  Footer  -->
             <div class="container-fluid bg-dark text-light d-flex align-items-center justify-content-center fixed-bottom" style="height:10vh">
                 
             </div>

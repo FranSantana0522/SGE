@@ -1,5 +1,6 @@
 <?php      
 
+// Funcion para conectar con la base de datos
 function conectarBD($bdName, $bdUser, $bdPass, $host) {
     try {
         // Establecer la conexión utilizando PDO
@@ -10,15 +11,16 @@ function conectarBD($bdName, $bdUser, $bdPass, $host) {
 
         return $pdo;
     } catch (PDOException $e) {
-        // En caso de error, mostrar el mensaje de error
+        // En caso de error mostrar el mensaje de error
         echo "Error de conexión: " . $e->getMessage();
         return null;
     }
 }
 
+// Funcion para hacer la consulta a la base de datos
 function consultaListadoVentas($conexion, $fechaInicio, $fechaFin) {
     try {
-        // Preparar la consulta SQL con la cláusula BETWEEN
+        // Consulta sql para recoger el listado de ventas entre dos fechas
         $sql = "SELECT sol.name, so.date_order 
                 FROM sale_order_line sol 
                 JOIN sale_order so ON sol.order_id = so.id   
@@ -26,17 +28,17 @@ function consultaListadoVentas($conexion, $fechaInicio, $fechaFin) {
                 AND so.date_order BETWEEN :fechaInicio AND :fechaFin 
                 ORDER BY so.date_order";
 
-        // Preparar la sentencia PDO
+        // Preparar la sentencia
         $stmt = $conexion->prepare($sql);
 
-        // Enlazar los valores de las fechas como parámetros
+        // Enlazar los valores de las fechas con los parametros
         $stmt->bindParam(':fechaInicio', $fechaInicio);
         $stmt->bindParam(':fechaFin', $fechaFin);
 
         // Ejecutar la consulta
         $stmt->execute();
 
-        // Obtener los resultados
+        // Obtenemos los resultados
         $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         return $resultados;
